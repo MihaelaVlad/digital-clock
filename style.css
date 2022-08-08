@@ -18,19 +18,44 @@ body {
 
 .container {
   position: absolute;
-  width: 40vw;
   background: linear-gradient(180deg, #ffffff98 0%, #ffffff1a 100%);
   box-shadow: 0px 4px 24px -1px #3859ff7a;
   backdrop-filter: blur(0.5rem);
   border-radius: 1rem;
-  border: 0.15rem solid #abd0df38;
-  padding: 0.75rem 0;
+  border: 0.1rem solid #cce9f5;
+  margin: 0 1rem;
+  padding: 1.5rem 2rem;
 }
 
-p {
+.digital-clock {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 100px;
-  color: rgb(255, 255, 255);
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.digital-clock:last-child {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .digital-clock {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .digital-clock {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .digital-clock {
+    font-size: 5rem;
+  }
 }

@@ -36,8 +36,31 @@ function init() {
   light.position.set(0, 1, 1);
   scene.add(light);
 
+  window.addEventListener('resize', onWindowResize, false);
+
+  function onWindowResize() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  }
+
   function getTime() {
     const date = new Date();
+    let month = date.toLocaleString('default', {
+      month: 'long',
+    });
+    let year = date.getFullYear();
+    let days = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+    let weekDay = days[date.getDay()];
+    let day = date.getDate().toString().padStart(2, '0');
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
@@ -69,8 +92,10 @@ function init() {
       second = seconds;
     }
 
+    let dateNow = `${weekDay}, ${day} ${month} ${year}`;
     let time = `${hour}:${minute}:${second} ${session}`;
 
+    document.getElementById('date').innerText = dateNow;
     document.getElementById('clock').innerText = time;
   }
 
@@ -81,7 +106,7 @@ function init() {
   let animate = function () {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    camera.rotation.x += 0.001;
+    camera.rotation.x += 0.0001;
     camera.rotation.y += 0.0015;
     camera.rotation.z += 0.0001;
   };
